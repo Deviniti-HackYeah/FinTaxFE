@@ -5,7 +5,7 @@ import { Component, inject } from '@angular/core';
   selector: 'app-tools',
   templateUrl: './tools.component.html',
   styleUrl: './tools.component.scss',
-  host: { class: 'flex gap-4 justify-end h-16' },
+  host: { class: 'flex gap-4 justify-end h-20' },
 })
 export class ToolsComponent {
   private readonly _translocoService = inject(TranslocoService);

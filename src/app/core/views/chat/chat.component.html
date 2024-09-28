@@ -1,7 +1,11 @@
 <div class="h-full overflow-auto">
   @for (message of conversation$ | async; track $index) {
     @if (message.type === 'user') {
-      <app-chat-bubble position="end" imgSrc="avatars/user.png">
+      <app-chat-bubble
+        imgSrc="avatars/user.png"
+        mode="secondary"
+        position="end"
+      >
         <span appTypewrite [text]="message.data.data"></span>
       </app-chat-bubble>
     } @else {

@@ -3,7 +3,7 @@ import { Component, computed, input } from '@angular/core';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
-const chatContainerVariants = cva(`daisy-chat mb-4`, {
+const chatContainerVariants = cva(`daisy-chat mb-2`, {
   variants: {
     position: {
       start: `daisy-chat-start mr-auto`,
@@ -46,7 +46,7 @@ export type ChatBubbleVariant = VariantProps<typeof chatBubbleVariants>;
         </div>
       }
       @if (userName()) {
-        <div class="daisy-chat-header">{{ userName() }}</div>
+        <div class="daisy-chat-header text-light">{{ userName() }}</div>
       }
       <div [class]="generatedBubble()">
         <ng-content />
