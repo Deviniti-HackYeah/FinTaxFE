@@ -4,6 +4,8 @@ import { Conversation } from '@core/models';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
+import { HistoryService } from './history.service';
+
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   public readonly conversation$ = new BehaviorSubject<Conversation[]>([]);
@@ -11,11 +13,17 @@ export class ChatService {
   public readonly loading$ = new BehaviorSubject<boolean>(false);
 
   private readonly _questionRepo = inject(QuestionRepository);
+  private readonly _historyService = inject(HistoryService);
   private readonly _router = inject(Router);
 
   public startOver(message: string): void {
+    this.conversation$.next([]);
     this.sessionId$.next(crypto.randomUUID());
     this._router.navigate(['/chat', this.sessionId$.value]);
+    this._historyService.addHistory({
+      key: this.sessionId$.value!,
+      name: message,
+    });
     this.askQuestion(message);
   }
 

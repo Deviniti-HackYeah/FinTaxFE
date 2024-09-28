@@ -7,21 +7,11 @@ export interface QuestionResponseDto {
     agent_1: string;
     agent_2: string;
   };
-  sources: QuestionSource[];
-  extras:
+  extras: (
     | QuestionExtrasDocument
-    | QuestionExtrasImage
+    | QuestionExtrasSource
     | QuestionExtrasQuote
-    | QuestionExtrasLink
-    | null;
-}
-
-// -------------------- QuestionSource --------------------
-
-export interface QuestionSource {
-  description: string;
-  title: string;
-  url: string;
+  )[];
 }
 
 // -------------------- QuestionExtras --------------------
@@ -34,9 +24,11 @@ export interface QuestionExtrasDocument {
   };
 }
 
-export interface QuestionExtrasImage {
-  type: 'image';
+export interface QuestionExtrasSource {
+  type: 'source';
   payload: {
+    description: string;
+    title: string;
     url: string;
   };
 }
@@ -45,13 +37,5 @@ export interface QuestionExtrasQuote {
   type: 'quote';
   payload: {
     text: string;
-  };
-}
-
-export interface QuestionExtrasLink {
-  type: 'link';
-  payload: {
-    title: string;
-    url: string;
   };
 }
