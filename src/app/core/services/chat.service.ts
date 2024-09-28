@@ -1,4 +1,5 @@
 import { QuestionRepository } from '@api/repositories';
+import { TranslocoService } from '@jsverse/transloco';
 import { Injectable, inject } from '@angular/core';
 import { Conversation } from '@core/models';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ export class ChatService {
   public readonly sessionId$ = new BehaviorSubject<string | null>(null);
   public readonly loading$ = new BehaviorSubject<boolean>(false);
 
+  private readonly _translocoService = inject(TranslocoService);
   private readonly _questionRepo = inject(QuestionRepository);
   private readonly _historyService = inject(HistoryService);
   private readonly _router = inject(Router);
@@ -41,13 +43,19 @@ export class ChatService {
 
     this.conversation$.next([
       ...this.conversation$.value,
-      { data: { data: message }, type: 'user' },
+      {
+        data: { data: message, lang: this._translocoService.getActiveLang() },
+        type: 'user',
+      },
     ]);
 
     this.loading$.next(true);
 
     this._questionRepo
-      .postQuestion(this.sessionId$.value, { data: message })
+      .postQuestion(this.sessionId$.value, {
+        lang: this._translocoService.getActiveLang(),
+        data: message,
+      })
       .subscribe({
         next: (response) => {
           this.loading$.next(false);

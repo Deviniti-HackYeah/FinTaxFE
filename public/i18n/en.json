@@ -9,7 +9,9 @@
   "WELCOME_TITLE": "Good morning!",
   "WELCOME_DESCRIPTION": "How can I help you today?",
   "WELCOME_BOTTOM": "Ask your question in the field below...",
+  "ARE_YOU_STILL_THERE": "Are you still with us?",
   "INPUT_PLACEHOLDER": "Ask your question",
   "SEND": "Send",
-  "TODAY": "Today"
-}
+  "TODAY": "Today",
+  "YES": "Yes"
+  }

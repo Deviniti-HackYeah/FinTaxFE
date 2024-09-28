@@ -1,5 +1,6 @@
 export interface QuestionRequestDto {
   data: string;
+  lang: string;
 }
 
 export interface QuestionResponseDto {

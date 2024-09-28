@@ -13,8 +13,8 @@ import { DEFAULT_LANG } from './transloco.const';
     provideTransloco({
       config: {
         defaultLang: localStorage.getItem('lang') || DEFAULT_LANG,
+        availableLangs: ['pl', 'en', 'ua'],
         prodMode: environment.production,
-        availableLangs: ['pl', 'en'],
         reRenderOnLangChange: true,
       },
       loader: TranslocoHttpLoader,
