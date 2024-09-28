@@ -19,6 +19,36 @@
           class="whitespace-pre-wrap"
           appTypewrite
         ></span>
+
+        <!-- <app-document
+          [data]="{
+            type: 'document',
+            payload: {
+              title: 'Document',
+              url: 'https://www.google.com',
+            },
+          }"
+        />
+
+        <app-quote
+          [data]="{
+            type: 'quote',
+            payload: {
+              text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!',
+            },
+          }"
+        />
+
+        <app-source
+          [data]="{
+            type: 'source',
+            payload: {
+              title: 'https://www.google.com',
+              description: 'This is a description of the source',
+              url: 'https://www.google.com',
+            },
+          }"
+        /> -->
       </app-chat-bubble>
     } @else if (message.type === 'reminder') {
       <app-reminder-box (confirmed)="viewBlocked.set(false)" />

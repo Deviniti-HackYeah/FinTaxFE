@@ -15,7 +15,7 @@ const chatContainerVariants = cva(`daisy-chat mb-2`, {
   },
 });
 
-const chatBubbleVariants = cva(`daisy-chat-bubble`, {
+const chatBubbleVariants = cva(`daisy-chat-bubble p-4`, {
   variants: {
     mode: {
       primary: `daisy-chat-bubble-primary`,
@@ -46,7 +46,7 @@ export type ChatBubbleVariant = VariantProps<typeof chatBubbleVariants>;
         </div>
       }
       @if (userName()) {
-        <div class="daisy-chat-header text-light">{{ userName() }}</div>
+        <div class="daisy-chat-header mb-1 text-light">{{ userName() }}</div>
       }
       <div [class]="generatedBubble()">
         <ng-content />

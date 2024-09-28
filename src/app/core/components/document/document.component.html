@@ -1,0 +1,12 @@
+<a
+  class="flex w-min max-w-80 gap-4 rounded-xl border border-dashed border-slate-300 bg-slate-100 text-sm hover:bg-lightest"
+  [href]="data().payload.url"
+  target="_blank"
+>
+  <div class="rounded-l-xl bg-slate-300 p-3">
+    <app-icon name="Download" size="18" class="text-white" />
+  </div>
+  <p class="w-full truncate py-3 pl-1 pr-4 font-semibold text-slate-600">
+    {{ data().payload.title }}
+  </p>
+</a>

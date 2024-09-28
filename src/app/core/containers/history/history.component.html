@@ -14,7 +14,7 @@
   <div class="mt-4 space-y-4 overflow-hidden">
     @for (historyItem of history$ | async; track $index) {
       <button
-        class="group flex w-full items-center justify-between gap-4 rounded-3xl bg-lightest px-4 py-3 text-sm text-primary hover:bg-lightest/50"
+        class="group flex h-12 w-full items-center justify-between gap-4 rounded-3xl bg-lightest px-4 py-3 text-sm text-primary hover:bg-lightest/50"
         [routerLink]="['/chat', historyItem.key]"
       >
         <p class="truncate">
