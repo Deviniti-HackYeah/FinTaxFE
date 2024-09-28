@@ -1,0 +1,36 @@
+<app-chat-bubble imgSrc="avatars/agent_1.png" userName="PoRadek" mode="accent">
+  <span
+    [text]="message().data.response.agent_1"
+    class="whitespace-pre-wrap"
+    appTypewrite
+  ></span>
+</app-chat-bubble>
+
+@if (message().data.extras?.length) {
+  <app-chat-bubble
+    imgSrc="avatars/agent_2.png"
+    [id]="message().data.id"
+    userName="KsięGosia"
+    mode="info"
+  >
+    <span
+      [text]="message().data.response.agent_1"
+      class="whitespace-pre-wrap"
+      appTypewrite
+    ></span>
+
+    @for (extra of message().data.extras; track $index) {
+      @switch (extra.type) {
+        @case ('document') {
+          <app-document [data]="extra" />
+        }
+        @case ('quote') {
+          <app-quote [data]="extra" />
+        }
+        @case ('source') {
+          <app-source [data]="extra" />
+        }
+      }
+    }
+  </app-chat-bubble>
+}

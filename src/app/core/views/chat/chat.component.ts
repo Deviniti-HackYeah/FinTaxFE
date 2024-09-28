@@ -1,7 +1,15 @@
-import { DestroyRef, Component, inject, OnInit, signal } from '@angular/core';
+import {
+  DestroyRef,
+  ElementRef,
+  Component,
+  viewChild,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { debounceTime, switchMap, interval, take, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ChatService } from '@core/services';
-import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -10,6 +18,7 @@ import { debounceTime } from 'rxjs';
   host: { class: 'flex flex-col h-full w-full' },
 })
 export class ChatComponent implements OnInit {
+  private readonly _container = viewChild<ElementRef<HTMLElement>>('container');
   private readonly _chatService = inject(ChatService);
   private readonly _destroyRef = inject(DestroyRef);
 
@@ -23,6 +32,7 @@ export class ChatComponent implements OnInit {
 
   public ngOnInit(): void {
     this._subscribeOnUserInactive();
+    this._scrollAfterRender();
   }
 
   private _subscribeOnUserInactive(): void {
@@ -34,5 +44,24 @@ export class ChatComponent implements OnInit {
           this.viewBlocked.set(true);
         }
       });
+  }
+
+  private _scrollAfterRender(): void {
+    this.conversation$
+      .pipe(
+        takeUntilDestroyed(this._destroyRef),
+        switchMap(() =>
+          interval(500).pipe(
+            take(5),
+            tap(() => {
+              if (this._container()) {
+                this._container()!.nativeElement.scrollTop =
+                  this._container()!.nativeElement.scrollHeight;
+              }
+            }),
+          ),
+        ),
+      )
+      .subscribe();
   }
 }

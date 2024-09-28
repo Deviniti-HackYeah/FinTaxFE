@@ -57,7 +57,7 @@ const buttonVariants = cva(`daisy-btn`, {
 export type ButtonVariant = VariantProps<typeof buttonVariants>;
 
 @Directive({
-  selector: 'button[appButton], a[appButton], div[appButton]',
+  selector: 'button[appButton], a[appButton]',
   host: { '[class]': '_generated()' },
   standalone: true,
 })

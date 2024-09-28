@@ -3,11 +3,12 @@ export interface QuestionRequestDto {
 }
 
 export interface QuestionResponseDto {
+  id: string;
   response: {
     agent_1: string;
     agent_2: string;
   };
-  extras: (
+  extras?: (
     | QuestionExtrasDocument
     | QuestionExtrasSource
     | QuestionExtrasQuote

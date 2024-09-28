@@ -40,7 +40,7 @@ export type ChatBubbleVariant = VariantProps<typeof chatBubbleVariants>;
     <div [class]="generatedContainer()">
       @if (imgSrc()) {
         <div class="daisy-avatar daisy-chat-image">
-          <div class="w-12 rounded-full">
+          <div class="w-14 rounded-full">
             <img [src]="imgSrc()" alt="avatar" />
           </div>
         </div>

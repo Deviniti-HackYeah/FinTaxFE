@@ -1,4 +1,4 @@
-<div class="h-full overflow-auto">
+<section class="h-full overflow-auto" #container>
   @for (message of conversation$ | async; track $index) {
     @if (message.type === 'user') {
       <app-chat-bubble
@@ -9,47 +9,7 @@
         <span>{{ message.data.data }}</span>
       </app-chat-bubble>
     } @else if (message.type === 'chat') {
-      <app-chat-bubble
-        imgSrc="avatars/agent.png"
-        userName="PoRadek"
-        mode="accent"
-      >
-        <span
-          [text]="message.data.response.agent_1"
-          class="whitespace-pre-wrap"
-          appTypewrite
-        ></span>
-
-        <!-- <app-document
-          [data]="{
-            type: 'document',
-            payload: {
-              title: 'Document',
-              url: 'https://www.google.com',
-            },
-          }"
-        />
-
-        <app-quote
-          [data]="{
-            type: 'quote',
-            payload: {
-              text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!',
-            },
-          }"
-        />
-
-        <app-source
-          [data]="{
-            type: 'source',
-            payload: {
-              title: 'https://www.google.com',
-              description: 'This is a description of the source',
-              url: 'https://www.google.com',
-            },
-          }"
-        /> -->
-      </app-chat-bubble>
+      <app-bot-response [message]="message" />
     } @else if (message.type === 'reminder') {
       <app-reminder-box (confirmed)="viewBlocked.set(false)" />
     }
@@ -58,7 +18,7 @@
   @if (loading$ | async) {
     <app-loading class="mx-auto mt-4 block" />
   }
-</div>
+</section>
 
 <app-chat-input
   [disabled]="!!(loading$ | async) || viewBlocked()"

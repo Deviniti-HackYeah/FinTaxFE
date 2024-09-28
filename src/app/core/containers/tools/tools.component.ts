@@ -1,5 +1,5 @@
+import { Component, inject, signal } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-tools',
@@ -9,6 +9,8 @@ import { Component, inject } from '@angular/core';
 })
 export class ToolsComponent {
   private readonly _translocoService = inject(TranslocoService);
+
+  public readonly extrasOpen = signal<boolean>(false);
 
   public setLanguage(language: string): void {
     localStorage.setItem('lang', language);
