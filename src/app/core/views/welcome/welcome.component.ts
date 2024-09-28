@@ -1,5 +1,7 @@
+import { FormControl, Validators } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 import { Component, inject } from '@angular/core';
+import { ChatService } from '@core/services';
 import { switchMap, of } from 'rxjs';
 
 @Component({
@@ -10,6 +12,7 @@ import { switchMap, of } from 'rxjs';
 })
 export class WelcomeComponent {
   private readonly _translocoService = inject(TranslocoService);
+  private readonly _chatService = inject(ChatService);
 
   private readonly _actionKeys = new Array(6)
     .fill(null)
@@ -18,4 +21,13 @@ export class WelcomeComponent {
   public readonly actions$ = of(this._actionKeys).pipe(
     switchMap((action) => this._translocoService.selectTranslate(action)),
   );
+
+  public readonly inputControl = new FormControl<string | null>(
+    null,
+    Validators.required,
+  );
+
+  public onSubmit(): void {
+    this._chatService.startOver(this.inputControl.value!);
+  }
 }

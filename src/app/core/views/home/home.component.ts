@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
-import { PingRepository } from '@api/index';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   templateUrl: './home.component.html',
@@ -12,13 +6,4 @@ import { PingRepository } from '@api/index';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex flex-col gap-4 h-screen' },
 })
-export class HomeComponent implements OnInit {
-  private readonly _pingRepo = inject(PingRepository);
-
-  public ngOnInit(): void {
-    this._pingRepo.ping().subscribe({
-      next: (response) => console.info(response),
-      error: (error) => console.error(error),
-    });
-  }
-}
+export class HomeComponent {}

@@ -72,7 +72,7 @@ export class ButtonDirective {
     transform: booleanAttribute,
   });
 
-  public readonly disabled = input<ButtonVariant['disabled'], string>(false, {
+  public readonly disabled = input<ButtonVariant['disabled'], boolean>(false, {
     transform: booleanAttribute,
   });
 

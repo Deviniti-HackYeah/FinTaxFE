@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { ChatComponent, HomeComponent, WelcomeComponent } from './views';
+import { WelcomeComponent, ChatComponent, HomeComponent } from './views';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
         component: WelcomeComponent,
       },
       {
-        path: ':sessionId',
+        path: 'chat/:sessionId',
         component: ChatComponent,
       },
       {

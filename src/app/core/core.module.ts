@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +15,6 @@ const COMPONENTS = [HomeComponent];
     WelcomeComponent,
     ChatComponent,
   ],
-  imports: [CoreRoutingModule, SharedModule],
+  imports: [CoreRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class CoreModule {}

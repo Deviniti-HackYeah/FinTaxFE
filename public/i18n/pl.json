@@ -4,5 +4,9 @@
   "QUICK_ACTION_3": "Przyjęcie darowizny z przejęciem długów",
   "QUICK_ACTION_4": "Pożyczka od bliskiej rodziny powyżej 36 120 zł",
   "QUICK_ACTION_5": "Pożyczka od osób spoza bliskiej rodziny powyżej 1000 zł",
-  "QUICK_ACTION_6": "Złożenia oświadczenia o ustanowieniu hipoteki"
+  "QUICK_ACTION_6": "Złożenia oświadczenia o ustanowieniu hipoteki",
+  "WELCOME_TITLE": "Witaj w aplikacji",
+  "WELCOME_DESCRIPTION": "Witaj w aplikacji, która pomoże Ci wypełnić wniosek o zwolnienie z podatku od czynności cywilnoprawnych. Wybierz jedną z poniższych opcji, aby rozpocząć.",
+  "INPUT_PLACEHOLDER": "Opisz swój przypadek",
+  "SEND": "Wyślij"
 }

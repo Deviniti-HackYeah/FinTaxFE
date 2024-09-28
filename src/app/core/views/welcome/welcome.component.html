@@ -8,17 +8,24 @@
   }
 </div>
 
-<section class="flex h-full flex-col items-center justify-center gap-4">
-  <h1 class="text-4xl font-semibold lg:text-6xl">{{ 'TITLE' | transloco }}</h1>
-  <p>{{ 'DESCRIPTION' | transloco }}</p>
+<section
+  class="flex h-full flex-col items-center justify-center gap-12 text-center"
+>
+  <h1 class="text-4xl font-semibold lg:text-6xl">
+    {{ 'WELCOME_TITLE' | transloco }}
+  </h1>
+  <p class="max-w-[800px]">{{ 'WELCOME_DESCRIPTION' | transloco }}</p>
 
-  <div class="mt-8 flex w-full gap-4 lg:w-2/3">
+  <div class="flex w-full gap-4 lg:w-2/3">
     <input
       [placeholder]="'INPUT_PLACEHOLDER' | transloco"
+      [formControl]="inputControl"
       mode="primary"
       class="w-full"
       appInput
     />
-    <button appButton mode="secondary">{{ 'SEND' | transloco }}</button>
+    <button appButton mode="secondary" [disabled]="inputControl.invalid" (click)="onSubmit()">
+      {{ 'SEND' | transloco }}
+    </button>
   </div>
 </section>
