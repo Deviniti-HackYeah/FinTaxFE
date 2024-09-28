@@ -19,7 +19,13 @@
     </button>
   </div>
 
-  <button mode="ghost" appButton icon>
+  <button
+    [severity]="isListening() ? 'danger' : 'none'"
+    [mode]="isListening() ? 'primary' : 'ghost'"
+    (click)="switchListening()"
+    appButton
+    icon
+  >
     <app-icon name="Mic" size="22" strokeWidth="2" class="text-light" />
   </button>
 

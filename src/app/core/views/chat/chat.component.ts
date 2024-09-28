@@ -10,8 +10,8 @@ import { debounceTime } from 'rxjs';
   host: { class: 'flex flex-col h-full w-full' },
 })
 export class ChatComponent implements OnInit {
-  private readonly _destroyRef = inject(DestroyRef);
   private readonly _chatService = inject(ChatService);
+  private readonly _destroyRef = inject(DestroyRef);
 
   public readonly conversation$ = this._chatService.conversation$;
   public readonly loading$ = this._chatService.loading$;
