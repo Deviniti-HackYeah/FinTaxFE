@@ -1,0 +1,14 @@
+<app-chat-bubble imgSrc="avatars/agent.png" userName="PoRadek" mode="accent">
+  {{ 'ARE_YOU_STILL_THERE' | transloco }}
+
+  <button
+    [disabled]="!!hasBeenConfirmed()"
+    class="mt-2 block p-0"
+    (click)="onConfirm()"
+    size="small"
+    mode="link"
+    appButton
+  >
+    {{ 'YES' | transloco }}
+  </button>
+</app-chat-bubble>

@@ -6,30 +6,32 @@
         mode="secondary"
         position="end"
       >
-        <span appTypewrite [text]="message.data.data"></span>
+        <span>{{ message.data.data }}</span>
       </app-chat-bubble>
-    } @else {
+    } @else if (message.type === 'chat') {
       <app-chat-bubble
         imgSrc="avatars/agent.png"
-        userName="MaxTax"
+        userName="PoRadek"
         mode="accent"
       >
         <span
-          appTypewrite
           [text]="message.data.response.agent_1"
           class="whitespace-pre-wrap"
+          appTypewrite
         ></span>
       </app-chat-bubble>
+    } @else if (message.type === 'reminder') {
+      <app-reminder-box (confirmed)="viewBlocked.set(false)" />
     }
   }
 
   @if (loading$ | async) {
-    <app-loading class="mx-auto block" />
+    <app-loading class="mx-auto mt-4 block" />
   }
 </div>
 
 <app-chat-input
-  [disabled]="!!(loading$ | async)"
+  [disabled]="!!(loading$ | async) || viewBlocked()"
   (submitted)="onSubmit($event)"
   class="mt-6 block"
 />

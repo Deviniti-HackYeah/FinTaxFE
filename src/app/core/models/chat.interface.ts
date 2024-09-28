@@ -9,4 +9,8 @@ export interface UserResponse {
   type: 'user';
 }
 
-export type Conversation = ChatResponse | UserResponse;
+export interface Reminder {
+  type: 'reminder';
+}
+
+export type Conversation = ChatResponse | UserResponse | Reminder;

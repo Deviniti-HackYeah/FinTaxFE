@@ -3,11 +3,12 @@ import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 
 import { WelcomeComponent, ChatComponent, HomeComponent } from './views';
+import { ReminderBoxComponent, ChatInputComponent } from './components';
 import { HistoryComponent, ToolsComponent } from './containers';
 import { CoreRoutingModule } from './core-routing.module';
-import { ChatInputComponent } from './components';
 
 const COMPONENTS = [
+  ReminderBoxComponent,
   ChatInputComponent,
   HistoryComponent,
   WelcomeComponent,

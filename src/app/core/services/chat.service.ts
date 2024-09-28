@@ -27,6 +27,13 @@ export class ChatService {
     this.askQuestion(message);
   }
 
+  public conversationReminder(): void {
+    this.conversation$.next([
+      ...this.conversation$.value,
+      { type: 'reminder' },
+    ]);
+  }
+
   public askQuestion(message: string): void {
     if (!this.sessionId$.value) {
       return;
