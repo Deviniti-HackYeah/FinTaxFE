@@ -8,8 +8,6 @@ import { ApiModule } from '@api/api.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TranslocoModule } from '@jsverse/transloco';
-import { HttpClientModule } from '@angular/common/http';
 
 const GLOBAL_MODULES = [LucideAngularModule.pick(icons), TranslocoRootModule];
 
@@ -20,7 +18,6 @@ const GLOBAL_MODULES = [LucideAngularModule.pick(icons), TranslocoRootModule];
     AppRoutingModule,
     BrowserModule,
     SharedModule,
-    // HttpClientModule,
     ApiModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

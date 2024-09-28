@@ -12,7 +12,7 @@ export class QuestionRepository {
     data: QuestionRequestDto,
   ): Observable<QuestionResponseDto> {
     return this._http.post<QuestionResponseDto>(
-      `${environment.apiUrl}/api/question`,
+      `${environment.apiUrl}/question`,
       data,
     );
   }
