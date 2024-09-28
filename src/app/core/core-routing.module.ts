@@ -1,12 +1,27 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { HomeComponent } from './views';
+import { ChatComponent, HomeComponent, WelcomeComponent } from './views';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    children: [
+      {
+        path: 'welcome',
+        component: WelcomeComponent,
+      },
+      {
+        path: ':sessionId',
+        component: ChatComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'welcome',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 

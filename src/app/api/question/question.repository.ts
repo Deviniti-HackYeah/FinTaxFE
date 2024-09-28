@@ -9,10 +9,11 @@ export class QuestionRepository {
   private readonly _http = inject(HttpClient);
 
   public postQuestion(
+    sessionId: string,
     data: QuestionRequestDto,
   ): Observable<QuestionResponseDto> {
     return this._http.post<QuestionResponseDto>(
-      `${environment.apiUrl}/question`,
+      `${environment.apiUrl}/question/${sessionId}`,
       data,
     );
   }

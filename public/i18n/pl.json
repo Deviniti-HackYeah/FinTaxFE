@@ -1,3 +1,8 @@
 {
-  "MODE": "Tryb"
+  "QUICK_ACTION_1": "Zakup samochodu od osoby prywatnej",
+  "QUICK_ACTION_2": "Zakup samochodu wspólnie z inną osobą ",
+  "QUICK_ACTION_3": "Przyjęcie darowizny z przejęciem długów",
+  "QUICK_ACTION_4": "Pożyczka od bliskiej rodziny powyżej 36 120 zł",
+  "QUICK_ACTION_5": "Pożyczka od osób spoza bliskiej rodziny powyżej 1000 zł",
+  "QUICK_ACTION_6": "Złożenia oświadczenia o ustanowieniu hipoteki"
 }
