@@ -1,7 +1,40 @@
-<p>chat works!</p>
-<app-loading />
-<app-chat-bubble>XDD</app-chat-bubble>
-<app-chat-bubble position="end">XDD</app-chat-bubble>
-<app-chat-bubble>XDD</app-chat-bubble>
-<app-chat-bubble>XDD</app-chat-bubble>
-<app-chat-bubble>XDD</app-chat-bubble>
+<div class="h-full overflow-auto">
+  @for (message of conversation$ | async; track $index) {
+    @if (message.type === 'user') {
+      <app-chat-bubble position="end" imgSrc="avatars/user.png">
+        <span appTypewrite [text]="message.data.data"></span>
+      </app-chat-bubble>
+    } @else {
+      <app-chat-bubble
+        imgSrc="avatars/agent.png"
+        userName="MaxTax"
+        mode="accent"
+      >
+        <span appTypewrite [text]="message.data.response.agent_1"></span>
+      </app-chat-bubble>
+    }
+  }
+
+  @if (loading$ | async) {
+    <app-loading class="mx-auto block" />
+  }
+</div>
+
+<form [formGroup]="form" class="mt-8 flex w-full gap-4">
+  <input
+    [placeholder]="'INPUT_PLACEHOLDER' | transloco"
+    formControlName="input"
+    class="w-full"
+    mode="primary"
+    appInput
+  />
+  <button
+    [disabled]="form.invalid"
+    (click)="onSubmit()"
+    mode="secondary"
+    type="submit"
+    appButton
+  >
+    {{ 'SEND' | transloco }}
+  </button>
+</form>

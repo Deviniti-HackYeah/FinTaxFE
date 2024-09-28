@@ -1,8 +1,15 @@
-<section class="h-20 w-full bg-secondary text-white">Navbar</section>
+<section
+  class="flex h-20 w-full items-center gap-4 bg-secondary px-8 text-white"
+>
+  <app-icon name="User" size="30" />
+  <p class="font-bold">e-Urząd Skarbowy Chat</p>
+</section>
 
-<section class="container mx-auto grid size-full grid-cols-8 gap-8 pb-8 ">
+<section
+  class="container mx-auto grid size-full grid-cols-8 gap-8 overflow-hidden py-4"
+>
   <app-history class="col-span-2 hidden lg:block" />
-  <div class="col-span-8 h-full lg:col-span-6">
+  <div class="col-span-8 h-full overflow-hidden lg:col-span-6">
     <router-outlet />
   </div>
 </section>

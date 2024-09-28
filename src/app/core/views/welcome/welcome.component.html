@@ -1,7 +1,8 @@
-<div class="flex justify-between gap-8">
+<div class="flex justify-between gap-4">
   @for (action of actions$ | async; track $index) {
     <button
       class="rounded-lg border border-slate-200 px-6 py-4 text-sm hover:bg-slate-100"
+      (click)="onAction(action)"
     >
       {{ action }}
     </button>
@@ -16,16 +17,21 @@
   </h1>
   <p class="max-w-[800px]">{{ 'WELCOME_DESCRIPTION' | transloco }}</p>
 
-  <div class="flex w-full gap-4 lg:w-2/3">
+  <form class="flex w-full gap-4 lg:w-2/3" [formGroup]="form">
     <input
       [placeholder]="'INPUT_PLACEHOLDER' | transloco"
-      [formControl]="inputControl"
-      mode="primary"
+      formControlName="input"
       class="w-full"
+      mode="primary"
       appInput
     />
-    <button appButton mode="secondary" [disabled]="inputControl.invalid" (click)="onSubmit()">
+    <button
+      [disabled]="form.invalid"
+      (click)="onSubmit()"
+      mode="secondary"
+      appButton
+    >
       {{ 'SEND' | transloco }}
     </button>
-  </div>
+  </form>
 </section>

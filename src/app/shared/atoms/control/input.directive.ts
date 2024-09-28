@@ -68,7 +68,7 @@ export class InputDirective {
 
   public readonly error = input<InputVariant['error']>();
 
-  public readonly disabled = input<InputVariant['disabled'], string>(false, {
+  public readonly disabled = input<InputVariant['disabled'], boolean>(false, {
     transform: booleanAttribute,
   });
 

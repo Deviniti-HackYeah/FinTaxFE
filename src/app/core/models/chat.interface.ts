@@ -9,4 +9,4 @@ export interface UserResponse {
   type: 'user';
 }
 
-export type Conversation = (ChatResponse | UserResponse)[];
+export type Conversation = ChatResponse | UserResponse;

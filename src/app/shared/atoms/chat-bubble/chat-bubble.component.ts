@@ -3,7 +3,7 @@ import { Component, computed, input } from '@angular/core';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
-const chatContainerVariants = cva(`daisy-chat`, {
+const chatContainerVariants = cva(`daisy-chat mb-4`, {
   variants: {
     position: {
       start: `daisy-chat-start mr-auto`,
@@ -40,7 +40,7 @@ export type ChatBubbleVariant = VariantProps<typeof chatBubbleVariants>;
     <div [class]="generatedContainer()">
       @if (imgSrc()) {
         <div class="daisy-avatar daisy-chat-image">
-          <div class="w-10 rounded-full">
+          <div class="w-12 rounded-full">
             <img [src]="imgSrc()" alt="avatar" />
           </div>
         </div>
@@ -61,7 +61,7 @@ export class ChatBubbleComponent {
   public readonly imgSrc = input<string>();
 
   public readonly position = input<ChatContainerVariant['position']>();
-  public readonly size = input<ChatBubbleVariant['mode']>();
+  public readonly mode = input<ChatBubbleVariant['mode']>();
 
   public readonly containerClasses = input<ClassValue | ClassArray>([], {
     alias: 'containerClass',
@@ -77,6 +77,6 @@ export class ChatBubbleComponent {
     ),
   );
   public readonly generatedBubble = computed(() =>
-    combine(chatBubbleVariants({ mode: this.size() }), this.containerClasses()),
+    combine(chatBubbleVariants({ mode: this.mode() }), this.containerClasses()),
   );
 }
