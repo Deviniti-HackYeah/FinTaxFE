@@ -1,0 +1,33 @@
+<div class="daisy-dropdown daisy-dropdown-end">
+  <div tabindex="0" role="button" mode="secondary" appButton icon>
+    <app-icon name="Languages" size="22" strokeWidth="2" />
+  </div>
+  <ul
+    class="daisy-menu daisy-dropdown-content z-[1] w-24 space-y-2 rounded-xl bg-base-100 p-2 shadow-lg"
+  >
+    <li class="flex items-center gap-2">
+      <button
+        (keypress)="setLanguage('pl')"
+        (click)="setLanguage('pl')"
+        class="w-full"
+      >
+        <img src="flags/pl.svg" alt="PL" class="size-4" />
+        PL
+      </button>
+    </li>
+    <li class="flex items-center gap-2">
+      <button
+        (keypress)="setLanguage('en')"
+        (click)="setLanguage('en')"
+        class="w-full"
+      >
+        <img src="flags/en.svg" alt="PL" class="size-4" />
+        EN
+      </button>
+    </li>
+  </ul>
+</div>
+
+<button mode="secondary" appButton icon>
+  <app-icon name="Star" size="22" strokeWidth="2" />
+</button>

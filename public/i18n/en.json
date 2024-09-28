@@ -1,3 +1,15 @@
 {
-  "MODE": "Mode"
+  "QUICK_ACTION_1": "Purchase of a car from a private person",
+  "QUICK_ACTION_2": "Purchase of a car together with another person",
+  "QUICK_ACTION_3": "Acceptance of a donation with assumption of debts",
+  "QUICK_ACTION_4": "Loan from close family above PLN 36,120",
+  "QUICK_ACTION_5": "Loan from people outside close family above PLN 1,000",
+  "QUICK_ACTION_6": "Submitting a declaration on establishing a mortgage",
+  "CHAT_HISTORY": "Chat history",
+  "WELCOME_TITLE": "Good morning!",
+  "WELCOME_DESCRIPTION": "How can I help you today?",
+  "WELCOME_BOTTOM": "Ask your question in the field below...",
+  "INPUT_PLACEHOLDER": "Ask your question",
+  "SEND": "Send",
+  "TODAY": "Today"
 }

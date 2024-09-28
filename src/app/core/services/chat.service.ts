@@ -6,8 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ChatService {
-  public readonly sessionId$ = new BehaviorSubject<string>(crypto.randomUUID());
   public readonly conversation$ = new BehaviorSubject<Conversation[]>([]);
+  public readonly sessionId$ = new BehaviorSubject<string | null>(null);
   public readonly loading$ = new BehaviorSubject<boolean>(false);
 
   private readonly _questionRepo = inject(QuestionRepository);
@@ -20,6 +20,10 @@ export class ChatService {
   }
 
   public askQuestion(message: string): void {
+    if (!this.sessionId$.value) {
+      return;
+    }
+
     this.conversation$.next([
       ...this.conversation$.value,
       { data: { data: message }, type: 'user' },

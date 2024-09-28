@@ -5,7 +5,11 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        light: '#72a1c6',
+        lighter: '#e4eef6',
+        lightest: '#f7fafc',
+      },
     },
   },
   plugins: [require('daisyui')],
@@ -17,13 +21,13 @@ module.exports = {
     themes: [
       {
         default: {
-          primary: '#015497',
-          secondary: '#dc0032',
+          primary: '#113694',
+          secondary: '#8ac8ef',
           accent: '#f7f7fa',
 
-          '--rounded-badge': '.3rem',
+          '--rounded-badge': '0.3rem',
           '--rounded-box': '0.3rem',
-          '--rounded-btn': '.3rem',
+          '--rounded-btn': '1.3rem',
           '--tab-radius': '0.3rem',
           '--btn-focus-scale': '1',
 

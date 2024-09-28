@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrl: './history.component.scss',
-  host: { class: 'size-full rounded-lg border border-slate-200' },
+  host: { class: 'size-full bg-lighter p-4 pl-6 flex flex-col' },
 })
 export class HistoryComponent {}

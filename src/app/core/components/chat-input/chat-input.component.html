@@ -1,0 +1,29 @@
+<form class="flex w-full gap-4 p-1" [formGroup]="form">
+  <div class="relative w-full">
+    <input
+      [placeholder]="'INPUT_PLACEHOLDER' | transloco"
+      formControlName="input"
+      class="w-full"
+      mode="base"
+      appInput
+    />
+    <button
+      class="absolute right-2 top-2"
+      (click)="onSubmit()"
+      severity="danger"
+      size="small"
+      appButton
+      icon
+    >
+      <app-icon name="ArrowRight" class="text-white" size="22" />
+    </button>
+  </div>
+
+  <button mode="ghost" appButton icon>
+    <app-icon name="Mic" size="22" strokeWidth="2" class="text-light" />
+  </button>
+
+  <button mode="ghost" appButton icon>
+    <app-icon name="Paperclip" size="22" strokeWidth="2" class="text-light" />
+  </button>
+</form>

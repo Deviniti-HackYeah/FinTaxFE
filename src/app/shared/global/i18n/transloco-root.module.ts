@@ -12,10 +12,10 @@ import { DEFAULT_LANG } from './transloco.const';
     provideHttpClient(),
     provideTransloco({
       config: {
+        defaultLang: localStorage.getItem('lang') || DEFAULT_LANG,
         prodMode: environment.production,
         availableLangs: ['pl', 'en'],
         reRenderOnLangChange: true,
-        defaultLang: DEFAULT_LANG,
       },
       loader: TranslocoHttpLoader,
     }),

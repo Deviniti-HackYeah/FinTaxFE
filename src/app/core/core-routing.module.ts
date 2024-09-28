@@ -1,7 +1,8 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterModule, Routes } from '@angular/router';
+import { inject, NgModule } from '@angular/core';
 
 import { WelcomeComponent, ChatComponent, HomeComponent } from './views';
+import { ChatService } from './services';
 
 const routes: Routes = [
   {
@@ -15,6 +16,12 @@ const routes: Routes = [
       {
         path: 'chat/:sessionId',
         component: ChatComponent,
+        resolve: {
+          data: (route: ActivatedRouteSnapshot): void => {
+            const service = inject(ChatService);
+            service.sessionId$.next(route.params['sessionId']);
+          },
+        },
       },
       {
         path: '',

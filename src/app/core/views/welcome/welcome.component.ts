@@ -1,4 +1,3 @@
-import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 import { Component, inject } from '@angular/core';
 import { ChatService } from '@core/services';
@@ -22,12 +21,8 @@ export class WelcomeComponent {
     switchMap((action) => this._translocoService.selectTranslate(action)),
   );
 
-  public readonly form = new FormGroup({
-    input: new FormControl<string | null>(null, Validators.required),
-  });
-
-  public onSubmit(): void {
-    this._chatService.startOver(this.form.get('input')!.value!);
+  public onSubmit(value: string): void {
+    this._chatService.startOver(value);
   }
 
   public onAction(action: string): void {
