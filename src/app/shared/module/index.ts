@@ -1,7 +1,8 @@
 import { AtomsModule } from '@shared/atoms/atoms.module';
+import { TranslocoModule } from '@jsverse/transloco';
 import { CommonModule } from '@angular/common';
 
-export const SHARED_MODULES = [CommonModule, AtomsModule];
+export const SHARED_MODULES = [CommonModule, AtomsModule, TranslocoModule];
 
 export const SHARED_DIRECTIVES = [];
 
