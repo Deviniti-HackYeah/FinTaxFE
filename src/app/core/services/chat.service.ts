@@ -34,7 +34,7 @@ const responses: ChatResponse[] = [
         {
           type: 'document',
           payload: {
-            title: 'Wniosek PCC-3',
+            title: 'Wniosek PCC-3 - Szablon',
             url: 'https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf',
           },
         },
@@ -81,8 +81,15 @@ const responses: ChatResponse[] = [
         {
           type: 'document',
           payload: {
-            title: 'Wypełniony wniosek PCC-3',
+            title: 'Wniosek PCC-3 - XML',
             url: 'https://wildcard2.theliver.pl/xml',
+          },
+        },
+        {
+          type: 'document',
+          payload: {
+            title: '@niosek PCC-3 - PDF',
+            url: 'https://wildcard2.theliver.pl/pcc3.html',
           },
         },
       ],
