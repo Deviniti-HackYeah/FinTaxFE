@@ -1,5 +1,6 @@
+import { TemplateRef, Component, computed, input } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
-import { Component, computed, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
@@ -48,15 +49,20 @@ export type ChatBubbleVariant = VariantProps<typeof chatBubbleVariants>;
       @if (userName()) {
         <div class="daisy-chat-header mb-1 text-light">{{ userName() }}</div>
       }
+      @if (userTemplate()) {
+        <ng-container [ngTemplateOutlet]="userTemplate()!" />
+      }
       <div [class]="generatedBubble()">
         <ng-content />
       </div>
     </div>
   `,
   selector: 'app-chat-bubble',
+  imports: [CommonModule],
   standalone: true,
 })
 export class ChatBubbleComponent {
+  public readonly userTemplate = input<TemplateRef<HTMLElement>>();
   public readonly userName = input<string>();
   public readonly imgSrc = input<string>();
 

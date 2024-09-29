@@ -1,4 +1,15 @@
-<app-chat-bubble imgSrc="avatars/agent_1.png" userName="PoRadek" mode="accent">
+<ng-template #agent_1_header>
+  <div class="daisy-chat-header mb-1 flex text-tertiary">
+    <span class="text-light">Po</span>
+    Radek
+  </div>
+</ng-template>
+
+<app-chat-bubble
+  [userTemplate]="agent_1_header"
+  imgSrc="avatars/agent_1.png"
+  mode="accent"
+>
   <span
     [text]="message().data.response.agent_1"
     class="whitespace-pre-wrap"
@@ -7,10 +18,17 @@
 </app-chat-bubble>
 
 @if (message().data.extras?.length) {
+  <ng-template #agent_2_header>
+    <div class="daisy-chat-header mb-1 flex text-tertiary">
+      <span class="text-light">Księ</span>
+      Gosia
+    </div>
+  </ng-template>
+
   <app-chat-bubble
     [id]="message().data.response_id"
+    [userTemplate]="agent_2_header"
     imgSrc="avatars/agent_2.png"
-    userName="KsięGosia"
     mode="accent"
   >
     <span
