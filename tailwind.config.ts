@@ -9,6 +9,7 @@ module.exports = {
         light: '#72a1c6',
         lighter: '#e4eef6',
         lightest: '#f7fafc',
+        tertiary: '#DC0032',
       },
     },
   },

@@ -7,7 +7,7 @@ import { switchMap, of } from 'rxjs';
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',
-  host: { class: 'flex flex-col h-full w-full' },
+  host: { class: 'flex flex-col h-full w-full relative' },
 })
 export class WelcomeComponent {
   private readonly _translocoService = inject(TranslocoService);
