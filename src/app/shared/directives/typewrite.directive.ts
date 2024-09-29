@@ -12,7 +12,7 @@ import {
   selector: '[appTypewrite]',
 })
 export class TypewriteDirective implements OnInit, OnDestroy {
-  @Input() public delay: number = 30;
+  @Input() public delay: number = 20;
   @Input() public text: string = '';
 
   private _interval?: ReturnType<typeof setTimeout>;
