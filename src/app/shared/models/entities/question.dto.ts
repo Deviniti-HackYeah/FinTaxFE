@@ -4,7 +4,7 @@ export interface QuestionRequestDto {
 }
 
 export interface QuestionResponseDto {
-  id: string;
+  response_id: string;
   response: {
     agent_1: string;
     agent_2: string;

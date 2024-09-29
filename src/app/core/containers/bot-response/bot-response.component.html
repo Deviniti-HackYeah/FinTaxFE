@@ -8,8 +8,8 @@
 
 @if (message().data.extras?.length) {
   <app-chat-bubble
+    [id]="message().data.response_id"
     imgSrc="avatars/agent_2.png"
-    [id]="message().data.id"
     userName="KsięGosia"
     mode="accent"
   >

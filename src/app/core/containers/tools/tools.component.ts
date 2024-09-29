@@ -20,8 +20,8 @@ export class ToolsComponent {
         .map(
           (item) =>
             item.data.extras?.map((extra) => ({
+              id: item.data.response_id,
               ...extra,
-              id: item.data.id,
             })) ?? [],
         )
         .filter((extras) => !!extras)
