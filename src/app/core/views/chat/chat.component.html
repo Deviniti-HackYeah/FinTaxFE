@@ -1,4 +1,4 @@
-<section class="h-full overflow-auto" #container>
+<section class="h-full overflow-auto" #container id="chat-container">
   @for (message of conversation$ | async; track $index) {
     @if (message.type === 'user') {
       <app-chat-bubble

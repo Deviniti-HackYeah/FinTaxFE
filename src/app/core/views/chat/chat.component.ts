@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit {
 
   private _subscribeOnUserInactive(): void {
     this.conversation$
-      .pipe(takeUntilDestroyed(this._destroyRef), debounceTime(30_000))
+      .pipe(takeUntilDestroyed(this._destroyRef), debounceTime(60_000))
       .subscribe(() => {
         if (!this.viewBlocked()) {
           this._chatService.conversationReminder();

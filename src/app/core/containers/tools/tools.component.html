@@ -1,3 +1,7 @@
+<button [routerLink]="['/']" mode="secondary" appButton icon class="lg:hidden">
+  <app-icon name="PencilLine" size="22" strokeWidth="2" />
+</button>
+
 <button [cdkMenuTriggerFor]="menu" mode="secondary" appButton icon>
   <app-icon name="Languages" size="22" strokeWidth="2" />
 </button>
@@ -25,20 +29,24 @@
       EN
     </button>
     <button
-    (click)="setLanguage('ua')"
-    class="gap-6"
-    mode="ghost"
-    cdkMenuItem
-    appButton
-  >
-    <img src="flags/ua.svg" alt="UA" class="size-4" />
-    UA
-  </button>
+      (click)="setLanguage('ua')"
+      class="gap-6"
+      mode="ghost"
+      cdkMenuItem
+      appButton
+    >
+      <img src="flags/ua.svg" alt="UA" class="size-4" />
+      UA
+    </button>
   </div>
 </ng-template>
 
 <div class="daisy-indicator">
-  <span class="daisy-badge daisy-indicator-item daisy-badge-warning px-2">99</span>
+  @if (!!(extras$ | async)?.length) {
+    <span class="daisy-badge daisy-indicator-item daisy-badge-warning px-2">
+      {{ (extras$ | async)?.length }}
+    </span>
+  }
   <button
     (click)="extrasOpen.set(!extrasOpen())"
     #trigger="cdkOverlayOrigin"
@@ -57,5 +65,25 @@
   [cdkConnectedOverlayOrigin]="trigger"
   cdkConnectedOverlay
 >
-  <div class="overlay-panel w-96">Vlss</div>
+  <div class="overlay-panel w-96 max-w-[calc(100vw-3rem)]">
+    @if (!(extras$ | async)?.length) {
+      <p class="py-4 text-center">
+        {{ 'NOTHING_TO_SHOW' | transloco }}
+      </p>
+    } @else {
+      @for (extra of extras$ | async; track $index) {
+        <button
+          (click)="scrollTo(extra.id)"
+          class="block text-left"
+          mode="ghost"
+          appButton
+        >
+          <p>{{ extra.type | titlecase }}</p>
+          <p class="text-xs text-slate-400">
+            {{ $any(extra.payload)['title'] || $any(extra.payload)['text'] }}
+          </p>
+        </button>
+      }
+    }
+  </div>
 </ng-template>
