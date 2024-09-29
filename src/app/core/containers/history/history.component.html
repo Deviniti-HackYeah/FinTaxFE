@@ -22,7 +22,7 @@
       @for (historyItem of history$ | async; track $index) {
         <button
           class="group flex h-12 w-full items-center justify-between gap-4 rounded-3xl bg-lightest px-4 py-3 text-sm text-primary hover:bg-lightest/50"
-          [routerLink]="['/chat', historyItem.key]"
+          (click)="goToChat(historyItem.key)"
         >
           <p class="truncate">
             {{ historyItem.name }}

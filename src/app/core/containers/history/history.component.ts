@@ -1,5 +1,6 @@
 import { HistoryService } from '@core/services/history.service';
 import { Component, inject } from '@angular/core';
+import { ChatService } from '@core/services';
 
 @Component({
   selector: 'app-history',
@@ -11,10 +12,15 @@ import { Component, inject } from '@angular/core';
 })
 export class HistoryComponent {
   private readonly _historyService = inject(HistoryService);
+  private readonly _chatService = inject(ChatService);
 
   public readonly history$ = this._historyService.history;
 
   public removeHistory(sessionId: string): void {
     this._historyService.removeItem(sessionId);
+  }
+
+  public goToChat(sessionId: string): void {
+    this._chatService.openFromHistory(sessionId);
   }
 }

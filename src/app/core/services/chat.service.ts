@@ -1,3 +1,4 @@
+import { HistoryRepository } from '@api/history/history.repository';
 import { QuestionRepository } from '@api/repositories';
 import { TranslocoService } from '@jsverse/transloco';
 import { Injectable, inject } from '@angular/core';
@@ -15,6 +16,7 @@ export class ChatService {
 
   private readonly _translocoService = inject(TranslocoService);
   private readonly _questionRepo = inject(QuestionRepository);
+  private readonly _historyRepo = inject(HistoryRepository);
   private readonly _historyService = inject(HistoryService);
   private readonly _router = inject(Router);
 
@@ -27,6 +29,20 @@ export class ChatService {
       name: message,
     });
     this.askQuestion(message);
+  }
+
+  public openFromHistory(key: string): void {
+    this.sessionId$.next(key);
+    this._router.navigate(['/chat', key]);
+    this._historyRepo.getHistory(key).subscribe({
+      next: (response) => {
+        const conversation = response.map((item) => ({
+          type: 'response_id' in item ? 'chat' : 'user',
+          data: item,
+        })) as Conversation[];
+        this.conversation$.next(conversation);
+      },
+    });
   }
 
   public conversationReminder(): void {
